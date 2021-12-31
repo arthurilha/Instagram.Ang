@@ -25,20 +25,35 @@ export class BannerComponent implements OnInit {
   public estado: string = 'visivel'
 
   public image : Imagem[] = [
-    { estado: 'escondido', url:'/assets/banner-acesso/img_1.jpg'},
+    { estado: 'visivel', url:'/assets/banner-acesso/img_1.jpg'},
     { estado: 'escondido', url:'/assets/banner-acesso/img_2.png'},
     { estado: 'escondido', url:'/assets/banner-acesso/img_3.png'},
     { estado: 'escondido', url:'/assets/banner-acesso/img_4.png'},
-    { estado: 'visivel', url:'/assets/banner-acesso/img_5.png'},
+    { estado: 'escondido', url:'/assets/banner-acesso/img_5.png'},
   ]
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.image)
+    setTimeout(() => this.logicaRotacao(),4000)
   }
   
-  public toogleEstado(): void{
-    this.estado = this.estado === 'visivel' ? 'escondido'  : 'visivel'
-  }
+ public logicaRotacao(): void{
+   
+   let idx: number = 0
+
+   for(let i: number = 0; i <= 4; i++){
+     if(this.image[i].estado === 'visivel'){
+       this.image[i].estado = 'escondido'
+       
+       idx = i ===4 ? 0 : i+1
+       console.log(this.image)
+       break
+     }
+   }
+
+   this.image[idx].estado = 'visivel'
+
+   setTimeout(() => this.logicaRotacao(),4000)
+ }
 
 }
