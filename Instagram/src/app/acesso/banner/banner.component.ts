@@ -46,7 +46,7 @@ export class BannerComponent implements OnInit {
        this.image[i].estado = 'escondido'
        
        idx = i ===4 ? 0 : i+1
-       console.log(this.image)
+       
        break
      }
    }
