@@ -9,14 +9,15 @@ import { Component, OnInit,EventEmitter,Output} from '@angular/core';
 export class CadastroComponent implements OnInit {
 
   
+  @Output() public exibirPainel: EventEmitter<string> = new EventEmitter()
+  
+  public exibirPaineLogin(): void{
+    this.exibirPainel.emit('login')
+  }
+
   public estd: string = 'app-cadastro'
   constructor() { }
 
   ngOnInit(): void {
-  }
-  @Output() public exibirPainel: EventEmitter<string> = new EventEmitter()
-  public exibirPaineLogin(): void{
-    console.log('oloco')
-   
   }
 }
