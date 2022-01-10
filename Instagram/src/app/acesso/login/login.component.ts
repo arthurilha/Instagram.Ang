@@ -1,4 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild} from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -14,9 +16,13 @@ export class LoginComponent implements OnInit {
     this.exibirPainel.emit('cadastro')
   }
 
+  @ViewChild("formulario")public f: NgForm
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  public confirmarDados(): void{
+      console.log(this.f.value)
+  }
 }

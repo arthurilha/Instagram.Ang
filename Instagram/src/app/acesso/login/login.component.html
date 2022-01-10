@@ -2,26 +2,54 @@
   <div class="card-body">
     <div class="card-title"></div>
     
-    <form >
+    <form #formulario="ngForm" (ngSubmit)="confirmarDados()">
       <div class="form-group pb-2">
         <input 
           type="email" 
           class="form-control " 
           placeholder="E-mail"
+          name="email"
+          ngModel=""
+          required
+          minlength="7"
+          #inputEmail="ngModel"
         >
+        <small *ngIf="inputEmail.valid" class="form-text text-sucess">OK</small>
+        <small *ngIf="!inputEmail.valid  && inputEmail.touched" class="form-text text-danger">Preencha o campo</small>
       </div>
       <div class="form-group pb-2">
         <input 
           type="password"
           class="form-control " 
           placeholder="Senha"
+          name="Senha"
+          ngModel=""
+          requirid
+          minlength="6"
+          #inputSenha="ngModel"
         >
+        <small *ngIf="inputSenha.valid && inputSenha.touched" class="form-text text-sucess">OK</small>
+        <small *ngIf="!inputSenha.valid && inputSenha.touched" class="form-text text-danger">Preencha o camp</small>
       </div>
+
       <div class="text-center ">
-      <button type="submit" class="btn btn-primary btn-sm btn-block ">Entrar</button>
+
+      <button 
+      type="submit"
+      class="btn btn-primary btn-sm btn-block"
+      >Entrar
+      </button>
     </div>
+    
+   <!--
+     {{formulario.valid | json}}
+    {{formulario.invalid | json}}
+    {{formulario.value | json}}
+  --> 
     </form>
     <hr />
+
+    
 
     <p class="small text-danger text-center">O nome de usuário inserido não pertence a uma conta. Verifique seu nome de usuário e tente novamente.</p>
 
